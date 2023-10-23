@@ -1,0 +1,56 @@
+#define ledGreen 2
+#define sensorP 8
+#define sensorS 9
+
+int valorSensorP = 0;
+int contP = 0;
+int valorSensorS = 0;
+int contS = 0;
+
+void setup(){
+  pinMode(sensorP, INPUT);
+  pinMode(sensorS, INPUT);  
+  pinMode(ledGreen, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  //No código abaixo eu transforma a leitura do sensor em 0 e 1.
+  //Aqui não tem mais o que mexer
+  	if (digitalRead(sensorP) == 0){
+      valorSensorP = 1;
+    } else {
+      valorSensorP = 0;
+    }
+  	if (digitalRead(sensorS) == 0){
+      valorSensorS = 1;
+    } else {
+      valorSensorS = 0;
+    }
+  //Aqui o código está pela metade, consigo acrescentar valor, mas não consigo ainda fazer subtrair.
+  	if (valorSensorP == 1){
+  		contP = contP + 1;
+  	}
+	if (valorSensorS== 1){
+  		contS = contS+ 1;
+      if (contS >= 1){
+        contP = 0;
+      }
+  	}
+  //Essa parte que faz a lampada acender tambem já está pronto!
+  if (contP == 0 && contS == 0){
+      digitalWrite(ledGreen, LOW);
+      delay(200);
+  } else {
+    digitalWrite(ledGreen, HIGH);
+    delay(200);
+  }
+   
+  
+  	Serial.print("Leitura do Sensor 1 ");
+  	Serial.println(valorSensorP);
+  	Serial.println(contP);
+  	Serial.print("Leitura do Sensor 2 ");
+  	Serial.println(valorSensorS);
+  	Serial.println(contS);
+} 

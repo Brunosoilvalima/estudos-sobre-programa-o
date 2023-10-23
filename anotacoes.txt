@@ -1,0 +1,4 @@
+for indice: trás as posiçoes dos numeros e strings, oq está em cada posição - EXEMPLO posicao 0 / posicao 1 / posicao 2 /posicao 3
+
+
+for item : [trás o conteudo inteiro que esta dentro da chave] EXEMPLO - [ 10.99, 3, 50.5 -3.5, 15.0 ] ele pega isso tudo 
